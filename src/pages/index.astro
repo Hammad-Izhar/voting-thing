@@ -1,11 +1,18 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import VoteCreationForm from "../components/VoteCreationForm";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+export async function GET() {
+    let number = Math.random();
+    return new Response(
+        JSON.stringify({
+            number,
+            message: `Here's a random number: ${number}`,
+        })
+    );
+}
 ---
 
 <Layout>
-	<Welcome />
+    <VoteCreationForm client:load />
 </Layout>
